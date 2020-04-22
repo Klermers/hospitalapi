@@ -5,6 +5,9 @@ import com.klermers.github.hospitalapi.services.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.UUID;
 
@@ -20,7 +23,7 @@ public class DoctorController {
     }
 
     @PostMapping
-    public void addDoctor(@RequestBody Doctor doctor){
+    public void addDoctor(@Valid @NotNull @RequestBody Doctor doctor){
         doctorService.addDoctor(doctor);
     }
 
@@ -32,5 +35,15 @@ public class DoctorController {
     @GetMapping(path = "{id}")
     public Doctor getDoctorById(@PathVariable("id") UUID id){
         return  doctorService.getDoctorById(id).orElse(null);
+    }
+
+    @PutMapping(path = "{id}")
+    public void updateDoctor(@PathVariable("id")UUID id,@Valid @NotNull @RequestBody Doctor doctor){
+        doctorService.updateDoctor(id,doctor);
+    }
+
+    @DeleteMapping(path = "{id}")
+    public void deleteDoctorById(@PathVariable("id")UUID id) {
+        doctorService.deleteDoctor(id);
     }
 }

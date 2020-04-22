@@ -2,12 +2,15 @@ package com.klermers.github.hospitalapi.entities;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.validation.constraints.NotBlank;
 import java.util.UUID;
 
 public class Doctor {
 
     private final UUID id;
+    @NotBlank
     private final String username;
+    @NotBlank
     private final String password;
     private final String firstname;
     private final String lastname;

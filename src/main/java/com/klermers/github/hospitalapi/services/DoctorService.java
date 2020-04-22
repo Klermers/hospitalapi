@@ -1,5 +1,6 @@
 package com.klermers.github.hospitalapi.services;
 
+import com.fasterxml.jackson.databind.deser.std.UUIDDeserializer;
 import com.klermers.github.hospitalapi.Dao.DoctorDao;
 import com.klermers.github.hospitalapi.entities.Doctor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,14 @@ public class DoctorService {
 
     public Optional<Doctor> getDoctorById(UUID id){
         return doctorDao.SelectDoctorById(id);
+    }
+
+    public int deleteDoctor(UUID id){
+        return  doctorDao.deleteDoctorById(id);
+    }
+
+    public int updateDoctor(UUID id, Doctor doctor){
+        return doctorDao.updateDoctorById(id, doctor);
     }
 
 }

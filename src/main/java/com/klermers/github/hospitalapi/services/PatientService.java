@@ -34,11 +34,11 @@ public class PatientService {
         return patientDao.SelectPatientById(id);
     }
 
-    public int deleteDoctor(UUID id){
+    public int deletePatient(UUID id){
         return  patientDao.deletePatientById(id);
     }
 
-    public int updateDoctor(UUID id, Patient patient){
+    public int updatePatient(UUID id, Patient patient){
         return patientDao.updatePatientById(id, patient);
     }
 }
